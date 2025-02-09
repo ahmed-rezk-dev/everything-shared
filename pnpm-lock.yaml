@@ -549,6 +549,9 @@ importers:
       '@everything-shared/collapsible':
         specifier: workspace:*
         version: link:../../packages/collapsible
+      '@everything-shared/components':
+        specifier: workspace:*
+        version: link:../../packages/components
       '@everything-shared/context-menu':
         specifier: workspace:*
         version: link:../../packages/context-menu
@@ -916,6 +919,9 @@ importers:
 
   packages/components:
     dependencies:
+      '@everything-shared/label':
+        specifier: workspace:*
+        version: link:../label
       '@everything-shared/slot':
         specifier: workspace:*
         version: link:../slot

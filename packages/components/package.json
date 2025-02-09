@@ -48,6 +48,7 @@
     "@everything-shared/slot": "workspace:*",
     "@everything-shared/types": "workspace:*",
     "@everything-shared/utils": "workspace:*",
+    "@everything-shared/label": "workspace:*",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "lucide-react": "^0.279.0",
