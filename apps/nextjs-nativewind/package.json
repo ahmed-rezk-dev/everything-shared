@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "clean": "rm -rf .next node_modules"
+    "clean": "rm -rf .next node_modules",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@everything-shared/accordion": "workspace:*",
@@ -20,6 +22,7 @@
     "@everything-shared/dialog": "workspace:*",
     "@everything-shared/dropdown-menu": "workspace:*",
     "@everything-shared/hover-card": "workspace:*",
+    "@everything-shared/input": "workspace:*",
     "@everything-shared/label": "workspace:*",
     "@everything-shared/menubar": "workspace:*",
     "@everything-shared/navigation-menu": "workspace:*",
@@ -40,7 +43,7 @@
     "@everything-shared/toolbar": "workspace:*",
     "@everything-shared/tooltip": "workspace:*",
     "@everything-shared/types": "workspace:*",
-    "@everything-shared/input": "workspace:*",
+    "@everything-shared/components": "workspace:*",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react-native": "^0.451.0",
@@ -55,10 +58,22 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.4",
+    "@react-native/babel-preset": "^0.77.0",
+    "@storybook/addon-essentials": "^8.5.3",
+    "@storybook/addon-interactions": "^8.5.3",
+    "@storybook/addon-onboarding": "^8.5.3",
+    "@storybook/addon-react-native-web": "^0.0.27",
+    "@storybook/blocks": "^8.5.3",
+    "@storybook/nextjs": "^8.5.3",
+    "@storybook/react": "^8.5.3",
+    "@storybook/test": "^8.5.3",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "babel-plugin-react-native-web": "^0.19.13",
     "postcss": "^8",
+    "storybook": "^8.5.3",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
