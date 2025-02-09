@@ -1,0 +1,400 @@
+---
+title: Dropdown Menu Primitive
+description: Shows a menu with options or actions when a user clicks the trigger button.
+---
+
+{/* prettier-ignore-start */}
+{/* prettier-ignore-end */}
+
+import Code from '@/components/ManualCode.astro';
+import { LinkButton } from '@/components/react/LinkButton';
+import { Aside, Tabs, TabItem } from '@astrojs/starlight/components';
+import importedNativeCode from '@/../node_modules/@everything-shared/dropdown-menu/src/dropdown-menu.tsx?raw';
+import importedWebCode from '@/../node_modules/@everything-shared/dropdown-menu/src/dropdown-menu.web.tsx?raw';
+import importedTypesCode from '@/../node_modules/@everything-shared/dropdown-menu/src/types.ts?raw';
+import importedIndexCode from '@/../node_modules/@everything-shared/dropdown-menu/src/index.ts?raw';
+
+Shows a menu with options or actions when a user clicks the trigger button.
+
+## Installation
+
+<Tabs>
+  <TabItem label="NPM">
+
+  Install the component via your command line.
+
+    ```bash
+    npx expo install @everything-shared/dropdown-menu
+    ```
+
+    <Aside title="Peer dependency">
+      If you do not have the portal primitive in your project, you will need to add it as well.
+
+       ```bash
+      npx expo install @everything-shared/portal
+      ```
+    </Aside>
+
+  </TabItem>
+  <TabItem label="Manual">
+    <Aside title="Uses shared primitives">
+      If you do not already have these primitives in your project, you will need to add them.
+
+      - [Hooks Primitive](/hooks)
+      - [Portal Primitive](/portal)
+      - [Slot Primitive](/slot)
+      - [Types Primitive](/types)
+      - [Utils Primitive](/utils)
+    </Aside>
+    <br />
+    <Tabs>
+      <TabItem label="Universal">
+        **Install <a target="_blank" href="https://www.radix-ui.com/primitives/docs/components/dropdown-menu">@radix-ui/react-dropdown-menu</a>**
+
+        ```bash
+        npx expo install @radix-ui/react-dropdown-menu
+        ```
+
+        **Copy/paste the following code for web to  `~/components/primitives/dropdown-menu/dropdown-menu.web.tsx`**
+
+        <Code code={importedWebCode} lang="tsx" title="~/components/primitives/dropdown-menu/dropdown-menu.web.tsx" />
+
+        **Copy/paste the following code for native to  `~/components/primitives/dropdown-menu/dropdown-menu.tsx`**
+
+        <Code code={importedNativeCode} lang="tsx" title="~/components/primitives/dropdown-menu/dropdown-menu.tsx" />
+
+        **Copy/paste the following code for types to  `~/components/primitives/dropdown-menu/types.ts`**
+
+        <Code code={importedTypesCode} lang="tsx" title="~/components/primitives/dropdown-menu/types.ts" />
+
+        **Copy/paste the following code for exporting to  `~/components/primitives/dropdown-menu/index.ts`**
+
+        <Code code={importedIndexCode} lang="tsx" title="~/components/primitives/dropdown-menu/index.ts" />
+      </TabItem>
+      <TabItem label="Native Only">
+        **Copy/paste the following code for native to  `~/components/primitives/dropdown-menu/index.tsx`**
+
+        <Code code={importedNativeCode} lang="tsx" title="~/components/primitives/dropdown-menu/index.tsx" />
+
+        **Copy/paste the following code for types to  `~/components/primitives/dropdown-menu/types.ts`**
+
+        <Code code={importedTypesCode} lang="tsx" title="~/components/primitives/dropdown-menu/types.ts" />
+      </TabItem>
+    </Tabs>
+  </TabItem>
+</Tabs>
+
+## Usage
+
+<Aside type="caution">
+
+  Requires a `<PortalHost />` as the last child of your `<Root/>` (`app/_layout.tsx`) component
+
+  ```tsx
+  import { PortalHost } from '@everything-shared/portal';
+
+  function Root() {
+    return (
+      <>
+        <Stack />
+        {/* Default Portal Host (one per app) */}
+        <PortalHost />
+      </>
+    );
+  }
+  ```
+
+</Aside>
+
+```tsx
+import * as DropdownMenuPrimitive from "@everything-shared/dropdown-menu";
+import * as React from "react";
+import { StyleSheet, Text, ViewStyle } from "react-native";
+
+const INDICATOR_STYLE: ViewStyle = {
+  height: 5,
+  width: 5,
+  backgroundColor: "red",
+  borderRadius: 50,
+  position: "absolute",
+  left: -10,
+  top: 6,
+};
+
+function Example() {
+  const [checkboxValue, setCheckboxValue] = React.useState(false);
+  const [subCheckboxValue, setSubCheckboxValue] = React.useState(false);
+  const [radioValue, setRadioValue] = React.useState('pedro');
+
+  return (
+      <DropdownMenuPrimitive.Root>
+        <DropdownMenuPrimitive.Trigger>
+          <Text>Open Dropdown Menu</Text>
+        </DropdownMenuPrimitive.Trigger>
+
+        <DropdownMenuPrimitive.Portal>
+          <DropdownMenuPrimitive.Overlay style={StyleSheet.absoluteFill}>
+            <DropdownMenuPrimitive.Content>
+              <DropdownMenuPrimitive.Item>
+                <Text>Back</Text>
+              </DropdownMenuPrimitive.Item>
+              <DropdownMenuPrimitive.Item>
+                <Text>Forward</Text>
+              </DropdownMenuPrimitive.Item>
+              <DropdownMenuPrimitive.Item>
+                <Text>Reload</Text>
+              </DropdownMenuPrimitive.Item>
+
+              <DropdownMenuPrimitive.Sub>
+                <DropdownMenuPrimitive.SubTrigger>
+                  <Text>More Tools</Text>
+                </DropdownMenuPrimitive.SubTrigger>
+                <DropdownMenuPrimitive.SubContent>
+                  <DropdownMenuPrimitive.Item>
+                    <Text>Save Page As...</Text>
+                  </DropdownMenuPrimitive.Item>
+                  <DropdownMenuPrimitive.Item>
+                    <Text>Create Shortcut...</Text>
+                  </DropdownMenuPrimitive.Item>
+
+                  <DropdownMenuPrimitive.Separator />
+                  <DropdownMenuPrimitive.Item>
+                    <Text>Developer Tools</Text>
+                  </DropdownMenuPrimitive.Item>
+                </DropdownMenuPrimitive.SubContent>
+              </DropdownMenuPrimitive.Sub>
+
+              <DropdownMenuPrimitive.Separator />
+              <DropdownMenuPrimitive.CheckboxItem
+                checked={checkboxValue}
+                onCheckedChange={setCheckboxValue}
+                closeOnPress={false}
+              >
+                <Text>Show Bookmarks Bar</Text>
+                <DropdownMenuPrimitive.ItemIndicator style={INDICATOR_STYLE} />
+              </DropdownMenuPrimitive.CheckboxItem>
+              <DropdownMenuPrimitive.CheckboxItem
+                checked={subCheckboxValue}
+                onCheckedChange={setSubCheckboxValue}
+                closeOnPress={false}
+              >
+                <Text>Show Full URLs</Text>
+                <DropdownMenuPrimitive.ItemIndicator style={INDICATOR_STYLE} />
+              </DropdownMenuPrimitive.CheckboxItem>
+              <DropdownMenuPrimitive.Separator />
+              <DropdownMenuPrimitive.RadioGroup
+                value={radioValue}
+                onValueChange={setRadioValue}
+              >
+                <DropdownMenuPrimitive.Label>
+                  People
+                </DropdownMenuPrimitive.Label>
+                <DropdownMenuPrimitive.Separator />
+                <DropdownMenuPrimitive.RadioItem
+                  value="pedro"
+                  closeOnPress={false}
+                >
+                  <Text>Elmer Fudd</Text>
+                  <DropdownMenuPrimitive.ItemIndicator
+                    style={INDICATOR_STYLE}
+                  />
+                </DropdownMenuPrimitive.RadioItem>
+                <DropdownMenuPrimitive.RadioItem
+                  value="colm"
+                  closeOnPress={false}
+                >
+                  <Text>Foghorn Leghorn</Text>
+                  <DropdownMenuPrimitive.ItemIndicator
+                    style={INDICATOR_STYLE}
+                  />
+                </DropdownMenuPrimitive.RadioItem>
+              </DropdownMenuPrimitive.RadioGroup>
+            </DropdownMenuPrimitive.Content>
+          </DropdownMenuPrimitive.Overlay>
+        </DropdownMenuPrimitive.Portal>
+      </DropdownMenuPrimitive.Root>
+  );
+}
+```
+
+## Props
+
+### Root
+
+Extends [`View`](https://reactnative.dev/docs/view#props) props
+
+|     Prop     |           Type           |     Note     |
+| :----------: | :----------------------: | :----------: |
+| onOpenChange | (open: boolean) => void | _(optional)_ ||   asChild    |         boolean          |       _(optional)_      |
+
+### Trigger
+
+Extends [`Pressable`](https://reactnative.dev/docs/pressable#props) props
+
+|  Prop   |  Type   |     Note     |
+| :-----: | :-----: | :----------: |
+| asChild | boolean | _(optional)_ |
+
+#### TYPE: `DropdownMenuTriggerRef`
+
+| Methods |  args   |          Note            |
+| :-----: | :-----: | :----------------------: |
+|  open   |         | opens the dropdown menu  |
+|  close  |         | closes the dropdown menu |
+
+### Portal
+
+|    Prop    |               Type               |         Note          |
+| :--------: | :------------------------------: | :-------------------: |
+| children\* |         React.ReactNode          |                       |
+| forceMount |        true \| undefined         |     _(optional)_      |
+|  hostName  |              string              | Web Only _(optional)_ |
+| container  | HTMLElement \| null \| undefined | Web Only _(optional)_ |
+
+### Overlay
+
+Extends [`Pressable`](https://reactnative.dev/docs/pressable#props) props
+
+|    Prop    |        Type        |     Note     |
+| :--------: | :----------------: | :----------: |
+|  asChild   |      boolean       | _(optional)_ |
+| forceMount | true \| undefined; | _(optional)_ |
+
+### Content
+
+Extends [`View`](https://reactnative.dev/docs/view#props) props
+
+|          Prop           |                     Type                     |           Note           |
+| :---------------------: | :------------------------------------------: | :----------------------: |
+|         asChild         |                   boolean                    |       _(optional)_       |
+|       forceMount        |              true \| undefined               |       _(optional)_       |
+|       alignOffset       |                    number                    |       _(optional)_       |
+|         insets          |                    Insets                    |       _(optional)_       |
+|     avoidCollisions     |                   boolean                    |       _(optional)_       |
+|          align          |         'start' \| 'center' \| 'end'         |       _(optional)_       |
+|          side           |              'top' \| 'bottom'               |       _(optional)_       |
+|       sideOffset        |                    number                    |       _(optional)_       |
+| disablePositioningStyle |                   boolean                    | Native Only _(optional)_ |
+|          loop           |                   boolean                    |  Web Only _(optional)_   |
+|    onCloseAutoFocus     |            (event: Event) => void            |  Web Only _(optional)_   |
+|     onEscapeKeyDown     |        (event: KeyboardEvent) => void        |  Web Only _(optional)_   |
+|  onPointerDownOutside   |  (event\: PointerDownOutsideEvent) => void   |  Web Only _(optional)_   |
+|     onFocusOutside      |      (event: FocusOutsideEvent) => void      |  Web Only _(optional)_   |
+|    onInteractOutside    | PointerDownOutsideEvent \| FocusOutsideEvent |  Web Only _(optional)_   |
+|    collisionBoundary    |  Element \| null \| Array\<Element \| null>  |  Web Only _(optional)_   |
+|         sticky          |            'partial' \| 'always'             |  Web Only _(optional)_   |
+|    hideWhenDetached     |                   boolean                    |  Web Only _(optional)_   |
+
+### Group
+
+Extends [`Text`](https://reactnative.dev/docs/text#props) props
+
+|  Prop   |  Type   |     Note     |
+| :-----: | :-----: | :----------: |
+| asChild | boolean | _(optional)_ |
+
+### Label
+
+Extends [`Text`](https://reactnative.dev/docs/text#props) props
+
+|  Prop   |  Type   |     Note     |
+| :-----: | :-----: | :----------: |
+| asChild | boolean | _(optional)_ |
+
+### Item
+
+Extends [`Pressable`](https://reactnative.dev/docs/pressable#props) props
+
+|  Prop   |  Type   |     Note     |
+| :-----: | :-----: | :----------: |
+| asChild | boolean | _(optional)_ |
+| textValue | boolean | _(optional)_ |
+| closeOnPress | boolean | _(optional)_ |
+
+### CheckboxItem
+
+Extends [`Pressable`](https://reactnative.dev/docs/pressable#props) props
+
+|     Prop     |           Type           |           Note          |
+| :----------: | :----------------------: | :---------------------: |
+|   checked*   |         boolean          |                         |
+|onCheckedChange*| (value: boolean) => void |                       |
+|   textValue* |         string           |                         |
+|  asChild     |         boolean          |       _(optional)_      |
+| closeOnPress |         boolean          | Native Only_(optional)_ |
+
+### RadioGroup
+
+Extends [`View`](https://reactnative.dev/docs/view#props) props
+
+|     Prop     |           Type           |           Note          |
+| :----------: | :----------------------: | :---------------------: |
+|   value*   |         boolean          |                         |
+|onValueChange*| (value: boolean) => void |                         |
+|  asChild     |         boolean          |       _(optional)_      |
+
+### RadioItem
+
+Extends [`Pressable`](https://reactnative.dev/docs/pressable#props) props
+
+|     Prop     |           Type           |           Note          |
+| :----------: | :----------------------: | :---------------------: |
+|   value*     |         boolean          |                         |
+|onCheckedChange*| (value: boolean) => void |                       |
+|  asChild     |         boolean          |       _(optional)_      |
+| closeOnPress |         boolean          | Native Only_(optional)_ |
+
+### ItemIndicator
+
+Extends [`View`](https://reactnative.dev/docs/view#props) props
+
+|  Prop   |  Type   |     Note     |
+| :-----: | :-----: | :----------: |
+| asChild | boolean | _(optional)_ |
+| forceMount | true /| undefined | _(optional)_ |
+
+### Separator
+
+Extends [`View`](https://reactnative.dev/docs/view#props) props
+
+|  Prop   |  Type   |     Note     |
+| :-----: | :-----: | :----------: |
+| asChild | boolean | _(optional)_ |
+| decorative | boolean | _(optional)_ |
+
+### Sub
+
+Extends [`View`](https://reactnative.dev/docs/view#props) props
+
+|     Prop     |           Type           |     Note     |
+| :----------: | :----------------------: | :----------: |
+|   asChild    |         boolean          | _(optional)_ |
+| defaultOpen  |         boolean          | _(optional)_ |
+|     open     |         boolean          | _(optional)_ |
+| onOpenChange | (value: boolean) => void | _(optional)_ |
+
+### SubTrigger
+
+Extends [`Pressable`](https://reactnative.dev/docs/pressable#props) props
+
+|  Prop   |  Type   |     Note     |
+| :-----: | :-----: | :----------: |
+| textValue | string | _(optional)_ |
+| asChild | boolean | _(optional)_ |
+
+### SubContent
+
+Extends [`Pressable`](https://reactnative.dev/docs/pressable#props) props
+
+|  Prop   |  Type   |     Note     |
+| :-----: | :-----: | :----------: |
+| asChild | boolean | _(optional)_ |
+| forceMount | true /| undefined | _(optional)_ |
+
+### useRootContext
+
+Must be used within a `Root` component. It provides the following values from the dropdown menu: `open`, and `onOpenChange`.
+
+### useSubContext
+
+Must be used within a `Sub` component. It provides the following values from the dropdown menu: `open`, and `onOpenChange`.

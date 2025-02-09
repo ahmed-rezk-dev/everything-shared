@@ -1,0 +1,69 @@
+---
+title: Separtor Primitive
+description: Creates a visual or semantic distinction between content.
+---
+
+{/* prettier-ignore-start */}
+{/* prettier-ignore-end */}
+
+import Code from '@/components/ManualCode.astro';
+import { LinkButton } from '@/components/react/LinkButton';
+import { Aside, Tabs, TabItem } from '@astrojs/starlight/components';
+import importedCode from '@/../node_modules/@everything-shared/separator/src/separator.tsx?raw';
+import importedTypesCode from '@/../node_modules/@everything-shared/separator/src/types.ts?raw';
+
+
+Creates a visual or semantic distinction between content.
+
+## Installation
+
+<Tabs>
+  <TabItem label="NPM">
+
+  Install the component via your command line.
+
+    ```bash
+    npx expo install @everything-shared/separator
+    ```
+
+  </TabItem>
+  <TabItem label="Manual">
+    <Aside title="Uses shared primitives">
+      If you do not already have these primitives in your project, you will need to add them.
+
+      - [Slot Primitive](/slot)
+      - [Types Primitive](/types)
+      
+    </Aside>
+
+
+    **Copy/paste the following code to `~/components/primitives/separator/index.tsx`**
+
+    <Code code={importedCode} lang="tsx" title="~/components/primitives/separator/index.tsx" />
+
+    **Copy/paste the following code to `~/components/primitives/separator/types.ts`**
+
+    <Code code={importedTypesCode} lang="tsx" title="~/components/primitives/separator/types.ts" />
+  </TabItem>
+</Tabs>
+## Usage
+
+```tsx
+import * as SeparatorPrimitive from '@everything-shared/separator';
+
+function Example() {
+  return <SeparatorPrimitive.Root />
+}
+```
+
+## Props
+
+### Root
+
+Extends [`View`](https://reactnative.dev/docs/view#props) props
+
+|   Prop   |  Type   |     Note     |
+| :------: | :-----: | :----------: |
+| orientation  | 'horizontal' \| 'vertical' | Defaults to `horizontal` _(optional)_|
+| decorative  | boolean |_(optional)_ |
+| asChild  | boolean | _(optional)_ |

@@ -1,0 +1,70 @@
+{
+  "name": "@everything-shared/aspect-ratio",
+  "version": "1.1.3",
+  "description": "Primitive aspect ratio",
+  "license": "MIT",
+  "author": "Ahmed Rezk",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ahmed-rezk-dev/everything-shared.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "bugs": {
+    "url": "https://github.com/ahmed-rezk-dev/everything-shared/issues"
+  },
+  "homepage": "https://github.com/ahmed-rezk-dev/everything-shared#readme",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./dist/aspect-ratio": {
+      "import": "./dist/aspect-ratio.mjs",
+      "require": "./dist/aspect-ratio.js",
+      "types": "./dist/aspect-ratio.d.ts",
+      "default": "./dist/aspect-ratio.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist",
+    "pub:beta": "pnpm publish --no-git-checks --access public --tag beta",
+    "pub:next": "pnpm publish --no-git-checks --access public --tag next",
+    "pub:release": "pnpm publish --access public"
+  },
+  "dependencies": {
+    "@everything-shared/slot": "workspace:*",
+    "@everything-shared/types": "workspace:*"
+  },
+  "devDependencies": {
+    "@tsconfig/react-native": "^1.0.1",
+    "@types/react": "~18.3.12",
+    "react": "18.3.1",
+    "react-native": "0.76.3",
+    "tsup": "^8.1.0"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "react-native-web": "*"
+  },
+  "peerDependenciesMeta": {
+    "react-native": {
+      "optional": true
+    },
+    "react-native-web": {
+      "optional": true
+    }
+  }
+}

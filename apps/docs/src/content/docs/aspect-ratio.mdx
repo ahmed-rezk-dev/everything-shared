@@ -1,0 +1,68 @@
+---
+title: Aspect-Ratio Primitive
+description: Presents content within a chosen aspect ratio.
+---
+
+{/* prettier-ignore-start */}
+{/* prettier-ignore-end */}
+
+import Code from '@/components/ManualCode.astro';
+import { LinkButton } from '@/components/react/LinkButton';
+import { Aside, Tabs, TabItem } from '@astrojs/starlight/components';
+import importedCode from '@/../node_modules/@everything-shared/aspect-ratio/src/aspect-ratio.tsx?raw';
+
+
+Presents content within a chosen aspect ratio.
+
+## Installation
+
+<Tabs>
+  <TabItem label="NPM">
+
+  Install the component via your command line.
+
+    ```bash
+    npx expo install @everything-shared/aspect-ratio
+    ```
+
+  </TabItem>
+  <TabItem label="Manual">
+  <Aside title="Uses shared primitives">
+      If you do not already have these primitives in your project, you will need to add them.
+
+      - [Types Primitive](/types)
+      - [Slot Primitive](/slot)
+
+  </Aside>
+
+  <br />
+
+  **Copy/paste the following code to `~/components/primitives/aspect-ratio.tsx`**
+
+  <Code code={importedCode} lang="tsx" title="~/components/primitives/aspect-ratio.tsx" />
+
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import * as AspectRatio from '@everything-shared/aspect-ratio';
+
+function Example() {
+  return (
+     <AspectRatio.Root ratio={16 / 9} />
+  );
+}
+```
+
+## Props
+
+### Root
+
+Extends [`View`](https://reactnative.dev/docs/view#props) props
+
+| Prop  |  Type  |             Note             |
+| :---: | :----: | :--------------------------: |
+| ratio | number | Defaults to `1` _(optional)_ |
+
