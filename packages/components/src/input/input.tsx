@@ -7,7 +7,8 @@ const Input = React.forwardRef<React.ElementRef<typeof TextInput>, TextInputProp
   ({ className, placeholderClassName, ...props }, ref) => {
     return (
       <View>
-        <Label.Text>Example Input Label </Label.Text>
+        {/* something weird going on with the label */}
+        {/* <Label.Text>Example Input Label </Label.Text> */}
         <TextInput
           ref={ref}
           className={cn(

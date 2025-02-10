@@ -2,7 +2,7 @@
   "name": "@everything-shared/monorepo",
   "private": true,
   "scripts": {
-    "dev": "turbo dev --concurrency=34",
+    "dev": "turbo dev --concurrency=39",
     "dev:primitives": "turbo dev --filter=./packages/* --concurrency=34",
     "dev:expo-nativewind": "turbo dev --filter=./apps/expo-nativewind",
     "dev:nextjs-nativewind": "turbo dev --filter=./apps/nextjs-nativewind",
