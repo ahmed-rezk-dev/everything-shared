@@ -922,6 +922,9 @@ importers:
       '@everything-shared/label':
         specifier: workspace:*
         version: link:../label
+      '@everything-shared/separator':
+        specifier: workspace:*
+        version: link:../separator
       '@everything-shared/slot':
         specifier: workspace:*
         version: link:../slot
